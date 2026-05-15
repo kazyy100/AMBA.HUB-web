@@ -55,7 +55,6 @@
             pointer-events:none;
         }
 
-        /* HEADER */
         header{
             padding:70px 8%;
             position:relative;
@@ -106,32 +105,33 @@
             box-shadow: 0 0 20px rgba(255,255,255,.2);
         }
 
-        /* MAIN CONTENT */
+        /* TAB CONTAINER */
         .wrap{
             display:flex;
             justify-content:center;
             gap:20px;
-            margin-top:120px;
+            margin-top:100px;
             position:relative;
             z-index:10;
             flex-wrap:wrap;
         }
 
-        /* CARD STYLE */
+        /* CARD/TAB STYLE */
         .card{
             width:380px;
             background:rgba(7,7,7,.82);
-            border:2px solid rgba(255,255,255,.45);
+            border:2px solid rgba(255,255,255,.2);
             border-radius:14px;
             padding:18px;
             backdrop-filter:blur(10px);
-            box-shadow: 0 0 20px rgba(255,255,255,.05);
-            transition:.25s;
+            cursor: pointer;
+            transition:.3s;
         }
 
-        .card:hover{
-            transform:translateY(-4px);
-            box-shadow: 0 0 30px rgba(255,255,255,.12);
+        .card.active{
+            border-color: #fff;
+            box-shadow: 0 0 30px rgba(255,255,255,.15);
+            transform: translateY(-5px);
         }
 
         .meta{
@@ -139,14 +139,66 @@
             justify-content:space-between;
             font-size:14px;
             color:#bbb;
-            border-bottom:1px solid #444;
-            padding-bottom:12px;
-            margin-bottom:18px;
+            margin-bottom:10px;
         }
 
         .card h2{
             font-size:28px;
-            margin-bottom:18px;
+            text-transform: uppercase;
+        }
+
+        /* CONTENT DISPLAY */
+        .content-area{
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .tab-content{
+            display: none;
+            background: rgba(10,10,10,0.9);
+            border: 1px solid #333;
+            border-radius: 15px;
+            padding: 30px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .features {
+            margin-bottom: 25px;
+        }
+
+        .features h3 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 20px;
+            border-left: 3px solid #fff;
+            padding-left: 10px;
+        }
+
+        .features ul {
+            list-style: none;
+            margin-left: 15px;
+            color: #ccc;
+        }
+
+        .features ul li {
+            margin-bottom: 5px;
+        }
+
+        .features ul li::before {
+            content: "• ";
+            color: #fff;
         }
 
         .code{
@@ -159,15 +211,15 @@
             color:#dcdcdc;
             margin-bottom:18px;
             overflow:auto;
+            border: 1px solid #222;
         }
 
         .btn{
             width:100%;
             padding:15px;
             border-radius:8px;
-            margin-top:12px;
             cursor:pointer;
-            font-size:18px;
+            font-size:16px;
             transition:.2s;
             font-family:'Inter';
             text-align:center;
@@ -178,34 +230,31 @@
         }
 
         .btn:hover{
-            transform:translateY(-2px);
-            box-shadow: 0 0 18px rgba(255,255,255,.12);
+            background: #e0e0e0;
+            transform: scale(1.02);
         }
 
-        /* FOOTER */
         footer{
             width:82%;
             margin:40px auto;
-            border-top:2px solid #333;
+            border-top:1px solid #333;
             padding-top:18px;
-            font-size:20px;
-            color:#fff;
+            font-size:16px;
+            color:#666;
         }
 
-        /* TOAST NOTIFICATION */
         #toast{
             position:fixed;
             right:25px;
             bottom:25px;
-            background:#111;
-            border:2px solid #666;
-            border-radius:14px;
-            padding:18px 28px;
-            font-size:18px;
+            background:#fff;
+            color: #000;
+            border-radius:10px;
+            padding:15px 25px;
+            font-weight: bold;
             opacity:0;
             visibility:hidden;
             transition:.3s;
-            box-shadow: 0 0 20px rgba(255,255,255,.08);
             z-index:9999;
         }
 
@@ -214,22 +263,10 @@
             visibility:visible;
         }
 
-        /* RESPONSIVE */
         @media(max-width:1000px){
-            .urabe{
-                width:250px;
-                right:-20px;
-                top:20px;
-            }
-            h1{
-                font-size:58px;
-            }
-            .wrap{
-                margin-top:60px;
-            }
-            .top-btn{
-                top:20px;
-            }
+            .urabe{ width:250px; right:-20px; top:20px; }
+            h1{ font-size:50px; }
+            .wrap{ margin-top:60px; }
         }
     </style>
 </head>
@@ -244,51 +281,101 @@
     <header>
         <div class="project">PROJECT ALHAUDH</div>
         <h1>AMBA.HUB</h1>
-        <div class="sub">SCRIPT ROBLOX FPS GAME</div>
+        <div class="sub">CHOOSE YOUR SCRIPT</div>
     </header>
 
     <div class="wrap">
-        <div class="card">
-            <div class="meta">
-                <span>Central System</span>
-                <span>FPS GAME PANEL</span>
-            </div>
+        <div class="card active" onclick="openTab(event, 'amba')">
+            <div class="meta"><span>FPS SPECIALIST</span><span>V4.0</span></div>
             <h2>amba.hub</h2>
+        </div>
+
+        <div class="card" onclick="openTab(event, 'ainz')">
+            <div class="meta"><span>EXPLOIT PACK</span><span>LATEST</span></div>
+            <h2>ainz hub</h2>
+        </div>
+    </div>
+
+    <div class="content-area">
+        <div id="amba" class="tab-content active">
+            <p style="margin-bottom: 20px; color: #888;">Ini adalah script khusus untuk FPS game (First Person Shooter) meliputi:</p>
+            
+            <div class="features">
+                <h3>MAIN FEATURES</h3>
+                <ul>
+                    <li>Aim bot</li>
+                    <li>ESP player with panel line</li>
+                    <li>Auto shoot (if cursor touch body enemies/player)</li>
+                    <li>Anti recoil (In Progress)</li>
+                    <li>Anti report</li>
+                </ul>
+            </div>
+
+            <div class="features">
+                <h3>FPS BOOST</h3>
+                <ul>
+                    <li>FPS booster (lower graphics for performance)</li>
+                    <li>Ping optimizer</li>
+                </ul>
+            </div>
+
             <div class="code" id="code1">
 local success, result = pcall(function()
     return game:HttpGet("https://raw.githubusercontent.com/kazyy100/AUTO-AIM-ROBLOX-FPS-GAME/refs/heads/main/amba.lua?nocache=" .. math.random(1, 999999))
 end)
 
 if success then
-    print("successfully")
     loadstring(result)()
 else
     warn("Failed: " .. tostring(result))
 end
             </div>
-            <button class="btn" onclick="copyCode('code1')">COPY SCRIPT</button>
+            <button class="btn" onclick="copyCode('code1')">COPY AMBA.HUB SCRIPT</button>
         </div>
 
-        <div class="card">
-            <div class="meta">
-                <span>Central System</span>
-                <span>FPS GAME + FARMING</span>
+        <div id="ainz" class="tab-content">
+            <p style="margin-bottom: 20px; color: #888;">Ini adalah script FPS game dan berbagai exploiting lainnya, meliputi:</p>
+            
+            <div class="features">
+                <h3>EXPLOITING TOOLS</h3>
+                <ul>
+                    <li>Fly Mode</li>
+                    <li>Bring Player</li>
+                    <li>Kill Player</li>
+                    <li>Speed Hack</li>
+                    <li>Jump Power</li>
+                    <li>ESP, etc.</li>
+                </ul>
             </div>
-            <h2>ainz hub</h2>
+
             <div class="code" id="code2">
 loadstring(game:HttpGet("https://pastebin.com/raw/ebqGm6dz"))()
             </div>
-            <button class="btn" onclick="copyCode('code2')">COPY SCRIPT</button>
+            <button class="btn" onclick="copyCode('code2')">COPY AINZ HUB SCRIPT</button>
         </div>
     </div>
 
     <footer>
-        Footer // AMBA.HUB by ambarul
+        AMBA.HUB // Created by pinguin
     </footer>
 
-    <div id="toast">COPIED SUCCESSFULLY ✦</div>
+    <div id="toast">COPIED TO CLIPBOARD! ✦</div>
 
     <script>
+        function openTab(evt, tabName) {
+            var i, tabContent, tabLinks;
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].classList.remove("active");
+            }
+            tabLinks = document.getElementsByClassName("card");
+            for (i = 0; i < tabLinks.length; i++) {
+                tabLinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
         function copyCode(id){
             const text = document.getElementById(id).innerText;
             navigator.clipboard.writeText(text)
@@ -297,11 +384,8 @@ loadstring(game:HttpGet("https://pastebin.com/raw/ebqGm6dz"))()
                 toast.classList.add("show");
                 setTimeout(() => {
                     toast.classList.remove("show");
-                }, 2500);
+                }, 2000);
             })
-            .catch(err => {
-                console.log(err);
-            });
         }
     </script>
 </body>
