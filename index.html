@@ -1,439 +1,308 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>AMBA.HUB</title>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap');
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    background:#000;
-    color:#fff;
-    font-family:'Inter',sans-serif;
-    min-height:100vh;
-    overflow-x:hidden;
-    position:relative;
-}
-
-/* GRID */
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-
-    background:
-    linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
-
-    background-size:40px 40px;
-    z-index:-3;
-}
-
-/* ANIME */
-.urabe{
-    position:absolute;
-
-    top:10px;
-    right:120px;
-
-    width:470px;
-
-    z-index:1;
-
-    opacity:.96;
-
-    filter:
-    drop-shadow(0 0 12px rgba(255,255,255,.45))
-    drop-shadow(0 0 40px rgba(255,255,255,.18));
-
-    pointer-events:none;
-}
-
-/* HEADER */
-header{
-    padding:70px 8%;
-    position:relative;
-    z-index:5;
-}
-
-.project{
-    font-family:'JetBrains Mono',monospace;
-    font-size:18px;
-    color:#d0d0d0;
-}
-
-h1{
-    font-size:88px;
-    line-height:.9;
-    letter-spacing:-4px;
-}
-
-.sub{
-    font-size:28px;
-    color:#fff;
-}
-
-/* DISCORD BUTTON TOP */
-.top-btn{
-    position:absolute;
-    top:35px;
-    left:50%;
-    transform:translateX(-50%);
-
-    z-index:20;
-}
-
-.discord-btn{
-    padding:14px 28px;
-
-    border:2px solid #fff;
-
-    border-radius:10px;
-
-    text-decoration:none;
-
-    color:#fff;
-
-    font-weight:700;
-
-    transition:.2s;
-
-    backdrop-filter:blur(6px);
-
-    background:rgba(255,255,255,.04);
-}
-
-.discord-btn:hover{
-    background:#fff;
-    color:#000;
-
-    box-shadow:
-    0 0 20px rgba(255,255,255,.2);
-}
-
-/* MAIN */
-.wrap{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-
-    margin-top:120px;
-
-    position:relative;
-    z-index:10;
-
-    flex-wrap:wrap;
-}
-
-/* CARD */
-.card{
-    width:380px;
-
-    background:rgba(7,7,7,.82);
-
-    border:2px solid rgba(255,255,255,.45);
-
-    border-radius:14px;
-
-    padding:18px;
-
-    backdrop-filter:blur(10px);
-
-    box-shadow:
-    0 0 20px rgba(255,255,255,.05);
-
-    transition:.25s;
-}
-
-.card:hover{
-    transform:translateY(-4px);
-
-    box-shadow:
-    0 0 30px rgba(255,255,255,.12);
-}
-
-/* META */
-.meta{
-    display:flex;
-    justify-content:space-between;
-
-    font-size:14px;
-
-    color:#bbb;
-
-    border-bottom:1px solid #444;
-
-    padding-bottom:12px;
-
-    margin-bottom:18px;
-}
-
-/* TITLE */
-.card h2{
-    font-size:28px;
-    margin-bottom:18px;
-}
-
-/* CODE */
-.code{
-    background:#0d0d0d;
-
-    border-radius:10px;
-
-    padding:18px;
-
-    font-family:'JetBrains Mono',monospace;
-
-    font-size:12px;
-
-    line-height:1.6;
-
-    color:#dcdcdc;
-
-    margin-bottom:18px;
-
-    overflow:auto;
-}
-
-/* BUTTON */
-.btn{
-    width:100%;
-
-    padding:15px;
-
-    border-radius:8px;
-
-    margin-top:12px;
-
-    cursor:pointer;
-
-    font-size:18px;
-
-    transition:.2s;
-
-    font-family:'Inter';
-
-    text-align:center;
-
-    border:none;
-
-    background:#fff;
-
-    color:#000;
-
-    font-weight:700;
-}
-
-.btn:hover{
-    transform:translateY(-2px);
-
-    box-shadow:
-    0 0 18px rgba(255,255,255,.12);
-}
-
-/* FOOTER */
-footer{
-    width:82%;
-
-    margin:40px auto;
-
-    border-top:2px solid #333;
-
-    padding-top:18px;
-
-    font-size:20px;
-
-    color:#fff;
-}
-
-/* TOAST */
-#toast{
-    position:fixed;
-
-    right:25px;
-    bottom:25px;
-
-    background:#111;
-
-    border:2px solid #666;
-
-    border-radius:14px;
-
-    padding:18px 28px;
-
-    font-size:18px;
-
-    opacity:0;
-
-    visibility:hidden;
-
-    transition:.3s;
-
-    box-shadow:
-    0 0 20px rgba(255,255,255,.08);
-
-    z-index:9999;
-}
-
-#toast.show{
-    opacity:1;
-    visibility:visible;
-}
-
-/* MOBILE */
-@media(max-width:1000px){
-
-    .urabe{
-        width:250px;
-        right:-20px;
-        top:20px;
-    }
-
-    h1{
-        font-size:58px;
-    }
-
-    .wrap{
-        margin-top:60px;
-    }
-
-    .top-btn{
-        top:20px;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="google-site-verification" content="PASTE_KODE_DARI_GOOGLE_DI_SINI" />
+    
+    <meta name="description" content="AMBA.HUB by pinguin - Script Roblox FPS Game terbaik untuk auto aim dan auto farm.">
+    <meta name="keywords" content="Roblox, Script, AMBA HUB, Pinguin, Auto Aim, CDID Auto Farm">
+
+    <title>AMBA.HUB by pinguin</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            background:#000;
+            color:#fff;
+            font-family:'Inter',sans-serif;
+            min-height:100vh;
+            overflow-x:hidden;
+            position:relative;
+        }
+
+        /* GRID BACKGROUND */
+        body::before{
+            content:"";
+            position:fixed;
+            inset:0;
+            background:
+                linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+                linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+            background-size:40px 40px;
+            z-index:-3;
+        }
+
+        /* ANIME IMAGE */
+        .urabe{
+            position:absolute;
+            top:10px;
+            right:120px;
+            width:470px;
+            z-index:1;
+            opacity:.96;
+            filter:
+                drop-shadow(0 0 12px rgba(255,255,255,.45))
+                drop-shadow(0 0 40px rgba(255,255,255,.18));
+            pointer-events:none;
+        }
+
+        /* HEADER */
+        header{
+            padding:70px 8%;
+            position:relative;
+            z-index:5;
+        }
+
+        .project{
+            font-family:'JetBrains Mono',monospace;
+            font-size:18px;
+            color:#d0d0d0;
+        }
+
+        h1{
+            font-size:88px;
+            line-height:.9;
+            letter-spacing:-4px;
+        }
+
+        .sub{
+            font-size:28px;
+            color:#fff;
+        }
+
+        /* DISCORD BUTTON */
+        .top-btn{
+            position:absolute;
+            top:35px;
+            left:50%;
+            transform:translateX(-50%);
+            z-index:20;
+        }
+
+        .discord-btn{
+            padding:14px 28px;
+            border:2px solid #fff;
+            border-radius:10px;
+            text-decoration:none;
+            color:#fff;
+            font-weight:700;
+            transition:.2s;
+            backdrop-filter:blur(6px);
+            background:rgba(255,255,255,.04);
+        }
+
+        .discord-btn:hover{
+            background:#fff;
+            color:#000;
+            box-shadow: 0 0 20px rgba(255,255,255,.2);
+        }
+
+        /* MAIN CONTENT */
+        .wrap{
+            display:flex;
+            justify-content:center;
+            gap:20px;
+            margin-top:120px;
+            position:relative;
+            z-index:10;
+            flex-wrap:wrap;
+        }
+
+        /* CARD STYLE */
+        .card{
+            width:380px;
+            background:rgba(7,7,7,.82);
+            border:2px solid rgba(255,255,255,.45);
+            border-radius:14px;
+            padding:18px;
+            backdrop-filter:blur(10px);
+            box-shadow: 0 0 20px rgba(255,255,255,.05);
+            transition:.25s;
+        }
+
+        .card:hover{
+            transform:translateY(-4px);
+            box-shadow: 0 0 30px rgba(255,255,255,.12);
+        }
+
+        .meta{
+            display:flex;
+            justify-content:space-between;
+            font-size:14px;
+            color:#bbb;
+            border-bottom:1px solid #444;
+            padding-bottom:12px;
+            margin-bottom:18px;
+        }
+
+        .card h2{
+            font-size:28px;
+            margin-bottom:18px;
+        }
+
+        .code{
+            background:#0d0d0d;
+            border-radius:10px;
+            padding:18px;
+            font-family:'JetBrains Mono',monospace;
+            font-size:12px;
+            line-height:1.6;
+            color:#dcdcdc;
+            margin-bottom:18px;
+            overflow:auto;
+        }
+
+        .btn{
+            width:100%;
+            padding:15px;
+            border-radius:8px;
+            margin-top:12px;
+            cursor:pointer;
+            font-size:18px;
+            transition:.2s;
+            font-family:'Inter';
+            text-align:center;
+            border:none;
+            background:#fff;
+            color:#000;
+            font-weight:700;
+        }
+
+        .btn:hover{
+            transform:translateY(-2px);
+            box-shadow: 0 0 18px rgba(255,255,255,.12);
+        }
+
+        /* FOOTER */
+        footer{
+            width:82%;
+            margin:40px auto;
+            border-top:2px solid #333;
+            padding-top:18px;
+            font-size:20px;
+            color:#fff;
+        }
+
+        /* TOAST NOTIFICATION */
+        #toast{
+            position:fixed;
+            right:25px;
+            bottom:25px;
+            background:#111;
+            border:2px solid #666;
+            border-radius:14px;
+            padding:18px 28px;
+            font-size:18px;
+            opacity:0;
+            visibility:hidden;
+            transition:.3s;
+            box-shadow: 0 0 20px rgba(255,255,255,.08);
+            z-index:9999;
+        }
+
+        #toast.show{
+            opacity:1;
+            visibility:visible;
+        }
+
+        /* RESPONSIVE */
+        @media(max-width:1000px){
+            .urabe{
+                width:250px;
+                right:-20px;
+                top:20px;
+            }
+            h1{
+                font-size:58px;
+            }
+            .wrap{
+                margin-top:60px;
+            }
+            .top-btn{
+                top:20px;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- DISCORD BUTTON -->
-<div class="top-btn">
-<a
-href="https://discord.gg/qa5bpScJ5a"
-target="_blank"
-class="discord-btn">
-JOIN DISCORD
-</a>
-</div>
+    <div class="top-btn">
+        <a href="https://discord.gg/qa5bpScJ5a" target="_blank" class="discord-btn">JOIN DISCORD</a>
+    </div>
 
-<!-- IMAGE -->
-<img
-src="https://cdn.discordapp.com/attachments/1179006055586467932/1504767633520853062/Gemini_Generated_Image_srl3xbsrl3xbsrl3-removebg-preview.png?ex=6a082f91&is=6a06de11&hm=52b964381df3b978ca1bf0823e64c01fa885a2becba43f10b349aee21054a5a6&"
-class="urabe"
->
+    <img src="https://cdn.discordapp.com/attachments/1179006055586467932/1504767633520853062/Gemini_Generated_Image_srl3xbsrl3xbsrl3-removebg-preview.png?ex=6a082f91&is=6a06de11&hm=52b964381df3b978ca1bf0823e64c01fa885a2becba43f10b349aee21054a5a6&" class="urabe">
 
-<!-- HEADER -->
-<header>
+    <header>
+        <div class="project">PROJECT ALHAUDH</div>
+        <h1>AMBA.HUB</h1>
+        <div class="sub">SCRIPT ROBLOX FPS GAME</div>
+    </header>
 
-<div class="project">
-PROJECT ALHAUDH
-</div>
+    <div class="wrap">
+        <div class="card">
+            <div class="meta">
+                <span>Central System</span>
+                <span>Main Script</span>
+            </div>
+            <h2>amba.hub</h2>
+            <div class="code" id="code1">
+local success, result = pcall(function()
+    return game:HttpGet("https://raw.githubusercontent.com/kazyy100/AUTO-AIM-ROBLOX-FPS-GAME/refs/heads/main/amba.lua?nocache=" .. math.random(1, 999999))
+end)
 
-<h1>AMBA.HUB</h1>
-
-<div class="sub">
-SCRIPT ROBLOX FPS GAME
-</div>
-
-</header>
-
-<!-- CONTENT -->
-<div class="wrap">
-
-<!-- CARD 1 -->
-<div class="card">
-
-<div class="meta">
-<span>Central System</span>
-<span>Secondary Node</span>
-</div>
-
-<h2>amba.hub</h2>
-
-<div class="code" id="code1">
-local success, result = pcall(function()<br>
-&nbsp;&nbsp;&nbsp;&nbsp;return game:HttpGet("https://raw.githubusercontent.com/kazyy100/AUTO-AIM-ROBLOX-FPS-GAME/refs/heads/main/amba.lua?nocache=" .. math.random(1, 999999))<br>
-end)<br><br>
-
-if success then<br>
-&nbsp;&nbsp;&nbsp;&nbsp;print("successfully")<br>
-&nbsp;&nbsp;&nbsp;&nbsp;loadstring(result)()<br>
-else<br>
-&nbsp;&nbsp;&nbsp;&nbsp;warn("Failed: " .. tostring(result))<br>
+if success then
+    print("successfully")
+    loadstring(result)()
+else
+    warn("Failed: " .. tostring(result))
 end
-</div>
+            </div>
+            <button class="btn" onclick="copyCode('code1')">COPY SCRIPT</button>
+        </div>
 
-<button class="btn" onclick="copyCode('code1')">
-COPY SCRIPT
-</button>
-
-</div>
-
-<!-- CARD 2 -->
-<div class="card">
-
-<div class="meta">
-<span>Central System</span>
-<span>Secondary Node</span>
-</div>
-
-<h2>ainz hub</h2>
-
-<div class="code" id="code2">
+        <div class="card">
+            <div class="meta">
+                <span>Central System</span>
+                <span>Farming Mode</span>
+            </div>
+            <h2>ainz hub</h2>
+            <div class="code" id="code2">
 loadstring(game:HttpGet("https://pastebin.com/raw/ebqGm6dz"))()
-</div>
+            </div>
+            <button class="btn" onclick="copyCode('code2')">COPY SCRIPT</button>
+        </div>
+    </div>
 
-<button class="btn" onclick="copyCode('code2')">
-COPY SCRIPT
-</button>
+    <footer>
+        Footer // AMBA.HUB by pinguin
+    </footer>
 
-</div>
+    <div id="toast">COPIED SUCCESSFULLY ✦</div>
 
-</div>
-
-<!-- FOOTER -->
-<footer>
-Footer // AMBA.HUB
-</footer>
-
-<!-- TOAST -->
-<div id="toast">
-COPIED SUCCESSFULLY ✦
-</div>
-
-<script>
-function copyCode(id){
-
-    const text =
-    document.getElementById(id).innerText;
-
-    navigator.clipboard.writeText(text)
-    .then(() => {
-
-        const toast =
-        document.getElementById("toast");
-
-        toast.classList.add("show");
-
-        setTimeout(() => {
-            toast.classList.remove("show");
-        }, 2500);
-
-    })
-    .catch(err => {
-        console.log(err);
-    });
-}
-</script>
-
+    <script>
+        function copyCode(id){
+            const text = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(text)
+            .then(() => {
+                const toast = document.getElementById("toast");
+                toast.classList.add("show");
+                setTimeout(() => {
+                    toast.classList.remove("show");
+                }, 2500);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        }
+    </script>
 </body>
 </html>
