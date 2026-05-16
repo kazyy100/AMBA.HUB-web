@@ -9,7 +9,7 @@
     <meta name="description" content="AMBA.HUB by pinguin - Script Roblox FPS Game terbaik untuk auto aim dan auto farm.">
     <meta name="keywords" content="Roblox, Script, AMBA HUB, Pinguin, Auto Aim, CDID Auto Farm">
 
-    <title>AMBA.HUB by pinguin</title>
+    <title>AHIS DRAFT</title>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap');
@@ -71,6 +71,7 @@
             font-size:88px;
             line-height:.9;
             letter-spacing:-4px;
+            text-transform: uppercase; /* Memastikan tulisan selalu huruf besar */
         }
 
         .sub{
@@ -280,30 +281,28 @@
 
     <header>
         <div class="project">PROJECT ALHAUDH</div>
-        <h1>AMBA.HUB</h1>
+        <h1 id="main-title">AMBA.HUB</h1>
         <div class="sub">CHOOSE YOUR SCRIPT</div>
     </header>
 
     <div class="wrap">
-        <div class="card active" onclick="openTab(event, 'amba')">
+        <div class="card active" onclick="openTab(event, 'amba', 'amba.hub')">
             <div class="meta"><span>FPS SPECIALIST</span><span>V4.0</span></div>
             <h2>amba.hub</h2>
         </div>
 
-        <div class="card" onclick="openTab(event, 'ainz')">
+        <div class="card" onclick="openTab(event, 'ainz', 'ainz hub')">
             <div class="meta"><span>EXPLOIT PACK</span><span>LATEST</span></div>
             <h2>ainz hub</h2>
         </div>
 
-        <!-- TAB BARU: KRYPTON VERSE.HUB -->
-        <div class="card" onclick="openTab(event, 'krypton')">
+        <div class="card" onclick="openTab(event, 'krypton', 'krypton verse.hub')">
             <div class="meta"><span>PREMIUM EDITION</span><span>V1.0</span></div>
             <h2>krypton verse.hub</h2>
         </div>
     </div>
 
     <div class="content-area">
-        <!-- KONTEN TAB 1: AMBA HUB -->
         <div id="amba" class="tab-content active">
             <p style="margin-bottom: 20px; color: #888;">Ini adalah script khusus untuk FPS game (First Person Shooter) meliputi:</p>
             
@@ -340,7 +339,6 @@ end
             <button class="btn" onclick="copyCode('code1')">COPY AMBA.HUB SCRIPT</button>
         </div>
 
-        <!-- KONTEN TAB 2: AINZ HUB -->
         <div id="ainz" class="tab-content">
             <p style="margin-bottom: 20px; color: #888;">Ini adalah script FPS game dan berbagai exploiting lainnya, meliputi:</p>
             
@@ -362,7 +360,6 @@ loadstring(game:HttpGet("https://pastebin.com/raw/ebqGm6dz"))()
             <button class="btn" onclick="copyCode('code2')">COPY AINZ HUB SCRIPT</button>
         </div>
 
-        <!-- KONTEN TAB 3: KRYPTON VERSE HUB -->
         <div id="krypton" class="tab-content">
             <p style="margin-bottom: 20px; color: #888;">Ini adalah script premium Krypton Verse dengan optimasi penuh, meliputi:</p>
             
@@ -392,7 +389,8 @@ loadstring(game:HttpGet("https://gist.githubusercontent.com/xxxtentabokep/48a004
     <div id="toast">COPIED TO CLIPBOARD! ✦</div>
 
     <script>
-        function openTab(evt, tabName) {
+        // MENAMBAHKAN PARAMETER 'titleText' PADA FUNGSI openTab
+        function openTab(evt, tabName, titleText) {
             var i, tabContent, tabLinks;
             tabContent = document.getElementsByClassName("tab-content");
             for (i = 0; i < tabContent.length; i++) {
@@ -404,6 +402,11 @@ loadstring(game:HttpGet("https://gist.githubusercontent.com/xxxtentabokep/48a004
             }
             document.getElementById(tabName).classList.add("active");
             evt.currentTarget.classList.add("active");
+
+            // LOGIKA UNTUK MENGUBAH TULISAN BESAR SECARA DINAMIS
+            if(titleText) {
+                document.getElementById("main-title").innerText = titleText;
+            }
         }
 
         function copyCode(id){
