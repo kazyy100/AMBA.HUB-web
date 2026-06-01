@@ -41,18 +41,19 @@
             z-index:-3;
         }
 
-        /* ANIME IMAGE */
-        .urabe{
-            position:absolute;
-            top:10px;
-            right:120px;
-            width:470px;
-            z-index:1;
-            opacity:.96;
-            filter:
-                drop-shadow(0 0 12px rgba(255,255,255,.45))
-                drop-shadow(0 0 40px rgba(255,255,255,.18));
-            pointer-events:none;
+        /* ANIME IMAGE BACKGROUND */
+        .background-image {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 1;
+            pointer-events: none;
+            object-fit: contain;
+            object-position: right center;
+            opacity: 0.85;
+            filter: drop-shadow(0 0 20px rgba(255,255,255,.1));
         }
 
         header{
@@ -71,7 +72,7 @@
             font-size:88px;
             line-height:.9;
             letter-spacing:-4px;
-            text-transform: uppercase; /* Memastikan tulisan selalu huruf besar */
+            text-transform: uppercase;
         }
 
         .sub{
@@ -79,16 +80,20 @@
             color:#fff;
         }
 
-        /* DISCORD BUTTON */
-        .top-btn{
+        /* TOP BUTTONS */
+        .top-buttons{
             position:absolute;
             top:35px;
             left:50%;
             transform:translateX(-50%);
             z-index:20;
+            display:flex;
+            gap:15px;
+            flex-wrap:wrap;
+            justify-content:center;
         }
 
-        .discord-btn{
+        .discord-btn, .executor-btn{
             padding:14px 28px;
             border:2px solid #fff;
             border-radius:10px;
@@ -98,9 +103,11 @@
             transition:.2s;
             backdrop-filter:blur(6px);
             background:rgba(255,255,255,.04);
+            cursor:pointer;
+            font-size:14px;
         }
 
-        .discord-btn:hover{
+        .discord-btn:hover, .executor-btn:hover{
             background:#fff;
             color:#000;
             box-shadow: 0 0 20px rgba(255,255,255,.2);
@@ -163,16 +170,22 @@
             border: 1px solid #333;
             border-radius: 15px;
             padding: 30px;
-            animation: fadeIn 0.4s ease;
+            animation: slideIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .tab-content.active {
             display: block;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes slideIn {
+            from { 
+                opacity: 0; 
+                transform: translateX(50px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateX(0);
+            }
         }
 
         .features {
@@ -235,6 +248,72 @@
             transform: scale(1.02);
         }
 
+        /* BUTTON EXECUTOR STYLE */
+        .btn-executor {
+            width: 100%;
+            padding: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            font-family: 'Inter';
+            text-align: center;
+            border: none;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: #fff;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-executor::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn-executor:hover::before {
+            left: 0;
+        }
+
+        .btn-executor:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+        }
+
+        /* EXECUTOR CONTENT */
+        .executor-content {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .executor-content p {
+            color: #aaa;
+            margin-bottom: 30px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .executor-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
         footer{
             width:82%;
             margin:40px auto;
@@ -242,6 +321,8 @@
             padding-top:18px;
             font-size:16px;
             color:#666;
+            position: relative;
+            z-index: 10;
         }
 
         #toast{
@@ -265,19 +346,25 @@
         }
 
         @media(max-width:1000px){
-            .urabe{ width:250px; right:-20px; top:20px; }
+            .background-image {
+                width: 300px;
+                height: auto;
+            }
             h1{ font-size:50px; }
             .wrap{ margin-top:60px; }
+            .top-buttons { gap: 10px; }
+            .discord-btn, .executor-btn { padding: 12px 20px; font-size: 12px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="top-btn">
-        <a href="https://discord.gg/qa5bpScJ5a" target="_blank" class="discord-btn">JOIN DISCORD</a>
-    </div>
+    <img src="akay.png" class="background-image" alt="Background">
 
-    <img src="https://cdn.discordapp.com/attachments/1179006055586467932/1504767633520853062/Gemini_Generated_Image_srl3xbsrl3xbsrl3-removebg-preview.png?ex=6a082f91&is=6a06de11&hm=52b964381df3b978ca1bf0823e64c01fa885a2becba43f10b349aee21054a5a6&" class="urabe">
+    <div class="top-buttons">
+        <a href="https://discord.gg/qa5bpScJ5a" target="_blank" class="discord-btn">JOIN DISCORD</a>
+        <button class="executor-btn" onclick="openExecutorTab()">EXECUTOR</button>
+    </div>
 
     <header>
         <div class="project">PROJECT ALHAUDH</div>
@@ -380,6 +467,18 @@ loadstring(game:HttpGet("https://gist.githubusercontent.com/xxxtentabokep/48a004
             </div>
             <button class="btn" onclick="copyCode('code3')">COPY KRYPTON VERSE SCRIPT</button>
         </div>
+
+        <div id="executor" class="tab-content">
+            <div class="executor-content">
+                <div class="executor-icon">⚙️</div>
+                <h3 style="font-size: 24px; margin-bottom: 15px; color: #fff;">EXECUTOR TOOLS</h3>
+                <p>Buka Executor untuk menjalankan script dan exploit dengan mudah.</p>
+                <p style="color: #666; font-size: 14px;">Klik tombol di bawah untuk mengakses Xeno Executor.</p>
+                <a href="https://www.xeno.now/download" target="_blank" class="btn-executor">
+                    ⬇️ DOWNLOAD EXECUTOR
+                </a>
+            </div>
+        </div>
     </div>
 
     <footer>
@@ -389,7 +488,6 @@ loadstring(game:HttpGet("https://gist.githubusercontent.com/xxxtentabokep/48a004
     <div id="toast">COPIED TO CLIPBOARD! ✦</div>
 
     <script>
-        // MENAMBAHKAN PARAMETER 'titleText' PADA FUNGSI openTab
         function openTab(evt, tabName, titleText) {
             var i, tabContent, tabLinks;
             tabContent = document.getElementsByClassName("tab-content");
@@ -403,10 +501,22 @@ loadstring(game:HttpGet("https://gist.githubusercontent.com/xxxtentabokep/48a004
             document.getElementById(tabName).classList.add("active");
             evt.currentTarget.classList.add("active");
 
-            // LOGIKA UNTUK MENGUBAH TULISAN BESAR SECARA DINAMIS
             if(titleText) {
                 document.getElementById("main-title").innerText = titleText;
             }
+        }
+
+        function openExecutorTab() {
+            var tabContent = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContent.length; i++) {
+                tabContent[i].classList.remove("active");
+            }
+            var tabLinks = document.getElementsByClassName("card");
+            for (var i = 0; i < tabLinks.length; i++) {
+                tabLinks[i].classList.remove("active");
+            }
+            document.getElementById("executor").classList.add("active");
+            document.getElementById("main-title").innerText = "EXECUTOR";
         }
 
         function copyCode(id){
