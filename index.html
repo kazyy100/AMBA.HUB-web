@@ -52,9 +52,28 @@
         pointer-events: none;
         object-fit: contain;
         object-position: right center;
-        opacity: 0.85;
+        opacity: 0;
         filter: drop-shadow(0 0 20px rgba(255,255,255,.1));
+        animation: boingIn 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
+
+@keyframes boingIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) translateX(200px);
+    }
+    60% {
+        opacity: 1;
+    }
+    80% {
+        transform: scale(1.05) translateX(-10px);
+    }
+    100% {
+        opacity: 0.85;
+        transform: scale(1) translateX(0);
+    }
+}
+
         
 
         header{
