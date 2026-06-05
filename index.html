@@ -365,16 +365,22 @@
             visibility:visible;
         }
 
-        @media(max-width:1000px){
-            .background-image {
-                width: 300px;
-                height: auto;
-            }
-            h1{ font-size:50px; }
-            .wrap{ margin-top:60px; }
-            .top-buttons { gap: 10px; }
-            .discord-btn, .executor-btn { padding: 12px 20px; font-size: 12px; }
-        }
+        @media(max-width: 600px) {
+    /* Bikin card memenuhi lebar layar di HP */
+    .card {
+        width: 90% !important; 
+        margin: 0 auto;
+    }
+
+    /* Kecilin ukuran font biar ga kegedean */
+    h1 { font-size: 45px !important; line-height: 1; }
+    
+    /* Bikin tombol di atas lebih rapi */
+    .top-buttons { width: 100%; padding: 0 10px; }
+    
+    /* Padding content area biar ga nempel pinggir */
+    .content-area { padding: 0 15px; }
+}
     </style>
 </head>
 <body>
