@@ -366,9 +366,22 @@
         }
 
         @media(max-width: 600px) {
-    /* Tambahkan margin-top agar header turun */
+    /* Kembalikan posisi tombol ke normal (bukan absolute) supaya tidak menutupi tulisan */
+    .top-buttons {
+        position: relative;
+        margin-top: 20px; 
+        margin-bottom: 20px;
+        top: auto;
+        left: auto;
+        transform: none;
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    /* Reset margin header agar tidak terlalu jauh ke bawah */
     header {
-        margin-top: 100px; /* Sesuaikan angka ini sampai pas di layar lu */
+        margin-top: 20px;
+        padding-top: 0;
     }
 
     .card {
@@ -377,9 +390,6 @@
     }
 
     h1 { font-size: 45px !important; line-height: 1; }
-    
-    .top-buttons { width: 100%; padding: 0 10px; }
-    
     .content-area { padding: 0 15px; }
 }
     </style>
