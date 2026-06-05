@@ -366,19 +366,20 @@
         }
 
         @media(max-width: 600px) {
-    /* Bikin card memenuhi lebar layar di HP */
-    .card {
-        width: 90% !important; 
-        margin: 0 auto;
+    /* Tambahkan margin-top agar header turun */
+    header {
+        margin-top: 100px; /* Sesuaikan angka ini sampai pas di layar lu */
     }
 
-    /* Kecilin ukuran font biar ga kegedean */
+    .card {
+        width: 90% !important; 
+        margin: 10px auto;
+    }
+
     h1 { font-size: 45px !important; line-height: 1; }
     
-    /* Bikin tombol di atas lebih rapi */
     .top-buttons { width: 100%; padding: 0 10px; }
     
-    /* Padding content area biar ga nempel pinggir */
     .content-area { padding: 0 15px; }
 }
     </style>
