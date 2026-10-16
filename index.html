@@ -44,14 +44,13 @@
         /* ANIME IMAGE BACKGROUND */
         .background-image {
         position: fixed;
-        top: 0;
-        right: 0;
+        inset: 0;
         width: 100%;
         height: 100vh;
         z-index: 1;
         pointer-events: none;
         object-fit: contain;
-        object-position: right center;
+        object-position: 50% 50% !important;
         opacity: 0;
         filter: drop-shadow(0 0 20px rgba(255,255,255,.1));
         animation: boingIn 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
@@ -60,21 +59,19 @@
 @keyframes boingIn {
     0% {
         opacity: 0;
-        transform: scale(0.5) translateX(200px);
+        transform: scale(0.5);
     }
     60% {
         opacity: 1;
     }
     80% {
-        transform: scale(1.05) translateX(-10px);
+        transform: scale(1.05);
     }
     100% {
         opacity: 0.85;
-        transform: scale(1) translateX(0);
+        transform: scale(1);
     }
 }
-
-        
 
         header{
             padding:70px 8%;
@@ -198,200 +195,116 @@
         }
 
         @keyframes slideIn {
-            from { 
-                opacity: 0; 
-                transform: translateX(50px);
-            }
-            to { 
-                opacity: 1; 
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
-        .features {
-            margin-bottom: 25px;
-        }
-
+        .features { margin-bottom: 25px; }
         .features h3 {
-            color: #fff;
-            margin-bottom: 10px;
-            font-size: 20px;
-            border-left: 3px solid #fff;
-            padding-left: 10px;
+            color: #fff; margin-bottom: 10px; font-size: 20px;
+            border-left: 3px solid #fff; padding-left: 10px;
         }
-
-        .features ul {
-            list-style: none;
-            margin-left: 15px;
-            color: #ccc;
-        }
-
-        .features ul li {
-            margin-bottom: 5px;
-        }
-
-        .features ul li::before {
-            content: "• ";
-            color: #fff;
-        }
+        .features ul { list-style: none; margin-left: 15px; color: #ccc; }
+        .features ul li { margin-bottom: 5px; }
+        .features ul li::before { content: "• "; color: #fff; }
 
         .code{
-            background:#0d0d0d;
-            border-radius:10px;
-            padding:18px;
-            font-family:'JetBrains Mono',monospace;
-            font-size:12px;
-            line-height:1.6;
-            color:#dcdcdc;
-            margin-bottom:18px;
-            overflow:auto;
-            border: 1px solid #222;
+            background:#0d0d0d; border-radius:10px; padding:18px;
+            font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.6;
+            color:#dcdcdc; margin-bottom:18px; overflow:auto; border:1px solid #222;
         }
 
         .btn{
-            width:100%;
-            padding:15px;
-            border-radius:8px;
-            cursor:pointer;
-            font-size:16px;
-            transition:.2s;
-            font-family:'Inter';
-            text-align:center;
-            border:none;
-            background:#fff;
-            color:#000;
-            font-weight:700;
+            width:100%; padding:15px; border-radius:8px; cursor:pointer;
+            font-size:16px; transition:.2s; font-family:'Inter'; text-align:center;
+            border:none; background:#fff; color:#000; font-weight:700;
         }
-
-        .btn:hover{
-            background: #e0e0e0;
-            transform: scale(1.02);
-        }
+        .btn:hover{ background:#e0e0e0; transform:scale(1.02); }
 
         /* BUTTON EXECUTOR STYLE */
         .btn-executor {
-            width: 100%;
-            padding: 18px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 18px;
-            transition: all 0.3s ease;
-            font-family: 'Inter';
-            text-align: center;
-            border: none;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            color: #fff;
-            font-weight: 700;
-            text-decoration: none;
-            display: inline-block;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
-            position: relative;
-            overflow: hidden;
+            width:100%; padding:18px; border-radius:8px; cursor:pointer;
+            font-size:18px; transition:all .3s ease; font-family:'Inter'; text-align:center;
+            border:none; background:linear-gradient(135deg,#6366f1 0%,#8b5cf6 100%);
+            color:#fff; font-weight:700; text-decoration:none; display:inline-block;
+            box-shadow:0 4px 15px rgba(99,102,241,.4); position:relative; overflow:hidden;
         }
-
         .btn-executor::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
-            transition: left 0.3s ease;
-            z-index: -1;
+            content:""; position:absolute; top:0; left:-100%; width:100%; height:100%;
+            background:linear-gradient(135deg,#8b5cf6 0%,#a78bfa 100%);
+            transition:left .3s ease; z-index:-1;
         }
-
-        .btn-executor:hover::before {
-            left: 0;
-        }
-
-        .btn-executor:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
-        }
+        .btn-executor:hover::before{ left:0; }
+        .btn-executor:hover{ transform:translateY(-3px); box-shadow:0 6px 20px rgba(99,102,241,.6); }
 
         /* EXECUTOR CONTENT */
-        .executor-content {
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        .executor-content p {
-            color: #aaa;
-            margin-bottom: 30px;
-            font-size: 16px;
-            line-height: 1.6;
-        }
-
-        .executor-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
+        .executor-content{ text-align:center; padding:20px 0; }
+        .executor-content p{ color:#aaa; margin-bottom:30px; font-size:16px; line-height:1.6; }
+        .executor-icon{ font-size:48px; margin-bottom:20px; animation:float 3s ease-in-out infinite; }
+        @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
 
         footer{
-            width:82%;
-            margin:40px auto;
-            border-top:1px solid #333;
-            padding-top:18px;
-            font-size:16px;
-            color:#666;
-            position: relative;
-            z-index: 10;
+            width:82%; margin:40px auto; border-top:1px solid #333; padding-top:18px;
+            font-size:16px; color:#666; position:relative; z-index:10;
         }
 
         #toast{
-            position:fixed;
-            right:25px;
-            bottom:25px;
-            background:#fff;
-            color: #000;
-            border-radius:10px;
-            padding:15px 25px;
-            font-weight: bold;
-            opacity:0;
-            visibility:hidden;
-            transition:.3s;
-            z-index:9999;
+            position:fixed; right:25px; bottom:25px; background:#fff; color:#000;
+            border-radius:10px; padding:15px 25px; font-weight:bold; opacity:0;
+            visibility:hidden; transition:.3s; z-index:9999;
+        }
+        #toast.show{ opacity:1; visibility:visible; }
+
+        @media(max-width:600px) {
+            .top-buttons { position:relative; margin-top:20px; margin-bottom:20px; top:auto; left:auto; transform:none; width:100%; padding:0 10px; }
+            header { margin-top:20px; padding-top:0; }
+            .card { width:90% !important; margin:10px auto; }
+            h1 { font-size:45px !important; line-height:1; }
+            .content-area { padding:0 15px; }
         }
 
-        #toast.show{
-            opacity:1;
-            visibility:visible;
+        /* TAMBAHAN FITUR KOMUNITAS: hanya memakai palet hitam/putih/abu dari desain asli */
+        .community-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+        .community-actions .btn{width:auto;flex:1;min-width:130px}
+        .community-field{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+        .community-field label{font-size:13px;color:#ddd;font-weight:700}
+        .community-field input,.community-field textarea,.community-field select{
+            width:100%;padding:13px;background:#0d0d0d;border:1px solid #333;border-radius:8px;
+            color:#fff;font:14px 'Inter',sans-serif;outline:none
         }
-
-        @media(max-width: 600px) {
-    /* Kembalikan posisi tombol ke normal (bukan absolute) supaya tidak menutupi tulisan */
-    .top-buttons {
-        position: relative;
-        margin-top: 20px; 
-        margin-bottom: 20px;
-        top: auto;
-        left: auto;
-        transform: none;
-        width: 100%;
-        padding: 0 10px;
-    }
-
-    /* Reset margin header agar tidak terlalu jauh ke bawah */
-    header {
-        margin-top: 20px;
-        padding-top: 0;
-    }
-
-    .card {
-        width: 90% !important; 
-        margin: 10px auto;
-    }
-
-    h1 { font-size: 45px !important; line-height: 1; }
-    .content-area { padding: 0 15px; }
-}
+        .community-field input:focus,.community-field textarea:focus,.community-field select:focus{border-color:#fff}
+        .community-field textarea{min-height:150px;resize:vertical;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.6}
+        .community-note{font-size:12px;line-height:1.7;color:#aaa;margin-bottom:18px}
+        .community-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:18px}
+        .community-script{background:rgba(7,7,7,.82);border:1px solid #333;border-radius:10px;padding:16px;min-width:0}
+        .community-script h3{font-size:17px;margin:10px 0;overflow-wrap:anywhere}
+        .community-script p{font-size:13px;color:#aaa;line-height:1.6;overflow-wrap:anywhere;margin-bottom:12px}
+        .community-script .meta{font-size:11px;gap:10px;overflow-wrap:anywhere}
+        .community-script .btn{font-size:13px;padding:11px;margin-top:8px}
+        .community-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+        .community-tabs button{flex:1;min-width:150px;padding:12px;border:1px solid #444;border-radius:8px;background:#080808;color:#fff;font-weight:700;cursor:pointer}
+        .community-tabs button.active,.community-tabs button:hover{background:#fff;color:#000}
+        .community-panel{display:none}.community-panel.active{display:block}
+        .community-status{font-size:12px;color:#bbb;line-height:1.6;margin-top:12px;overflow-wrap:anywhere}
+        .community-empty{border:1px dashed #444;border-radius:10px;padding:24px;color:#aaa;font-size:13px;text-align:center;grid-column:1/-1}
+        .community-modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:10000;display:none;align-items:center;justify-content:center;padding:18px}
+        .community-modal-backdrop.show{display:flex}
+        .community-modal{width:min(440px,100%);background:#090909;border:1px solid #444;border-radius:12px;padding:24px;max-height:90vh;overflow:auto}
+        .community-modal h2{font-size:24px;margin-bottom:18px}
+        .community-modal-head{display:flex;align-items:center;justify-content:space-between;gap:15px}
+        .community-close{background:transparent;border:0;color:#fff;font-size:26px;cursor:pointer}
+        .community-search{width:100%;padding:12px;background:#0d0d0d;border:1px solid #333;color:#fff;border-radius:8px;margin-bottom:14px}
+        .community-code{white-space:pre-wrap;overflow-wrap:anywhere;max-height:50vh;overflow:auto;background:#0d0d0d;border:1px solid #333;border-radius:8px;padding:15px;font:12px/1.6 'JetBrains Mono',monospace;color:#ddd;margin:15px 0}
+        .community-auth-buttons{display:flex;gap:10px;flex-wrap:wrap}
+        .community-auth-buttons button{flex:1;min-width:120px}
+        /* Tombol navigasi komunitas kecil di baris atas; palet tetap mengikuti desain asli */
+        .community-nav-btn{padding:9px 12px;border:1px solid #fff;border-radius:8px;text-decoration:none;color:#fff;font-weight:700;transition:.2s;backdrop-filter:blur(6px);background:rgba(255,255,255,.04);cursor:pointer;font-size:11px;white-space:nowrap}
+        .community-nav-btn:hover{background:#fff;color:#000;box-shadow:0 0 20px rgba(255,255,255,.2)}
+        /* Login/register dipisahkan di pojok kanan atas, ukuran kecil */
+        .account-buttons{position:absolute;top:18px;right:24px;z-index:30;display:flex;align-items:center;justify-content:flex-end;gap:7px}
+        .account-btn{padding:7px 10px;border:1px solid #fff;border-radius:7px;color:#fff;background:rgba(255,255,255,.04);font:700 10px 'Inter',sans-serif;cursor:pointer;white-space:nowrap;backdrop-filter:blur(6px);transition:.2s}
+        .account-btn:hover{background:#fff;color:#000}
+        @media(max-width:600px){.community-tabs{flex-direction:column}.community-actions{flex-direction:column;align-items:stretch}.community-actions .btn{width:100%}.community-nav-btn{padding:9px 10px;font-size:10px}.account-buttons{top:10px;right:10px;gap:5px}.account-btn{padding:7px 8px;font-size:9px}.top-buttons{margin-top:46px}header{margin-top:10px}}
     </style>
 </head>
 <body>
@@ -399,8 +312,19 @@
     <img src="https://raw.githubusercontent.com/kazyy100/AMBA.HUB-web/main/akay.png" class="background-image" alt="Background">
 
     <div class="top-buttons">
-        <a href="https://discord.gg/qa5bpScJ5a" target="_blank" class="discord-btn">JOIN DISCORD</a>
+        <a href="https://discord.gg/qa5bpScJ5a" target="_blank" rel="noopener noreferrer" class="discord-btn">JOIN DISCORD</a>
         <button class="executor-btn" onclick="openExecutorTab()">EXECUTOR</button>
+        <!-- Navigasi komunitas dipindah ke tombol kecil di bagian atas -->
+        <button class="community-nav-btn" type="button" onclick="openTab(null, 'public-scripts', 'PUBLIC SCRIPTS')">PUBLIC SCRIPTS</button>
+        <button class="community-nav-btn" type="button" onclick="openTab(null, 'admin-scripts', 'COMMUNITY ADMIN SCRIPTS')">ADMIN SCRIPTS</button>
+        <button class="community-nav-btn" type="button" onclick="openTab(null, 'upload-script', 'UPLOAD SCRIPT')">UPLOAD SCRIPT</button>
+    </div>
+
+    <!-- Tombol akun terpisah di kanan atas -->
+    <div class="account-buttons" aria-label="Account actions">
+        <button class="account-btn" id="communityLoginButton" type="button" onclick="openCommunityAuth('login')">LOG IN</button>
+        <button class="account-btn" id="communitySignupButton" type="button" onclick="openCommunityAuth('signup')">SIGN UP</button>
+        <button class="account-btn" id="communityLogoutButton" type="button" onclick="communityLogout()" style="display:none">LOG OUT</button>
     </div>
 
     <header>
@@ -411,50 +335,24 @@
 
     <div class="wrap">
         <div class="card active" onclick="openTab(event, 'amba', 'amba.hub')">
-            <div class="meta"><span>FPS SPECIALIST</span><span>V4.0</span></div>
-            <h2>amba.hub</h2>
+            <div class="meta"><span>FPS SPECIALIST</span><span>V4.0</span></div><h2>amba.hub</h2>
         </div>
-
         <div class="card" onclick="openTab(event, 'ainz', 'ainz hub')">
-            <div class="meta"><span>EXPLOIT PACK</span><span>LATEST</span></div>
-            <h2>ainz hub</h2>
+            <div class="meta"><span>EXPLOIT PACK</span><span>LATEST</span></div><h2>ainz hub</h2>
         </div>
-
         <div class="card" onclick="openTab(event, 'krypton', 'krypton verse.hub')">
-            <div class="meta"><span>PREMIUM EDITION</span><span>V1.0</span></div>
-            <h2>krypton verse.hub</h2>
+            <div class="meta"><span>PREMIUM EDITION</span><span>V1.0</span></div><h2>krypton verse.hub</h2>
         </div>
-
-        <!-- VOID.HUB Card Added -->
         <div class="card" onclick="openTab(event, 'void', 'void.hub')">
-            <div class="meta"><span>FPS SPECIALIST</span><span>NEW</span></div>
-            <h2>void.hub</h2>
+            <div class="meta"><span>FPS SPECIALIST</span><span>NEW</span></div><h2>void.hub</h2>
         </div>
     </div>
 
     <div class="content-area">
         <div id="amba" class="tab-content active">
-            <p style="margin-bottom: 20px; color: #888;">Ini adalah script khusus untuk FPS game (First Person Shooter) meliputi:</p>
-            
-            <div class="features">
-                <h3>MAIN FEATURES</h3>
-                <ul>
-                    <li>Aim bot</li>
-                    <li>ESP player with panel line</li>
-                    <li>Auto shoot (if cursor touch body enemies/player)</li>
-                    <li>Anti recoil (In Progress)</li>
-                    <li>Anti report</li>
-                </ul>
-            </div>
-
-            <div class="features">
-                <h3>FPS BOOST</h3>
-                <ul>
-                    <li>FPS booster (lower graphics for performance)</li>
-                    <li>Ping optimizer</li>
-                </ul>
-            </div>
-
+            <p style="margin-bottom:20px;color:#888;">Ini adalah script khusus untuk FPS game (First Person Shooter) meliputi:</p>
+            <div class="features"><h3>MAIN FEATURES</h3><ul><li>Aim bot</li><li>ESP player with panel line</li><li>Auto shoot (if cursor touch body enemies/player)</li><li>Anti recoil (In Progress)</li><li>Anti report</li></ul></div>
+            <div class="features"><h3>FPS BOOST</h3><ul><li>FPS booster (lower graphics for performance)</li><li>Ping optimizer</li></ul></div>
             <div class="code" id="code1">
 local success, result = pcall(function()
     return game:HttpGet("https://raw.githubusercontent.com/kazyy100/AUTO-AIM-ROBLOX-FPS-GAME/refs/heads/main/amba.lua?nocache=" .. math.random(1, 999999))
@@ -470,137 +368,348 @@ end
         </div>
 
         <div id="ainz" class="tab-content">
-            <p style="margin-bottom: 20px; color: #888;">Ini adalah script FPS game dan berbagai exploiting lainnya, meliputi:</p>
-            
-            <div class="features">
-                <h3>EXPLOITING TOOLS</h3>
-                <ul>
-                    <li>Fly Mode</li>
-                    <li>Bring Player</li>
-                    <li>Kill Player</li>
-                    <li>Speed Hack</li>
-                    <li>Jump Power</li>
-                    <li>ESP, etc.</li>
-                </ul>
-            </div>
-
-            <div class="code" id="code2">
-loadstring(game:HttpGet("https://pastebin.com/raw/ebqGm6dz"))()
-            </div>
+            <p style="margin-bottom:20px;color:#888;">Ini adalah script FPS game dan berbagai exploiting lainnya, meliputi:</p>
+            <div class="features"><h3>EXPLOITING TOOLS</h3><ul><li>Fly Mode</li><li>Bring Player</li><li>Kill Player</li><li>Speed Hack</li><li>Jump Power</li><li>ESP, etc.</li></ul></div>
+            <div class="code" id="code2">loadstring(game:HttpGet("https://pastebin.com/raw/ebqGm6dz"))()</div>
             <button class="btn" onclick="copyCode('code2')">COPY AINZ HUB SCRIPT</button>
         </div>
 
         <div id="krypton" class="tab-content">
-            <p style="margin-bottom: 20px; color: #888;">Ini adalah script premium Krypton Verse dengan optimasi penuh, meliputi:</p>
-            
-            <div class="features">
-                <h3>MAIN FEATURES</h3>
-                <ul>
-                    <li>Aimbot Target Closest (To Cursor)</li>
-                    <li>Full Player ESP (Box, Snapline, Highlight)</li>
-                    <li>Fly Cheat & Fly Speed Slider</li>
-                    <li>No Clip</li>
-                    <li>No Recoil Mode</li>
-                    <li>Anti-Report Shield</li>
-                </ul>
-            </div>
-
-            <div class="code" id="code3">
-loadstring(game:HttpGet("https://gist.githubusercontent.com/xxxtentabokep/48a004d8cadfd1208c3261b8cb4dc76f/raw/f8774127890ba97fff68fd895cf30157bed73d35/gistfile1.txt"))()
-            </div>
+            <p style="margin-bottom:20px;color:#888;">Ini adalah script premium Krypton Verse dengan optimasi penuh, meliputi:</p>
+            <div class="features"><h3>MAIN FEATURES</h3><ul><li>Aimbot Target Closest (To Cursor)</li><li>Full Player ESP (Box, Snapline, Highlight)</li><li>Fly Cheat &amp; Fly Speed Slider</li><li>No Clip</li><li>No Recoil Mode</li><li>Anti-Report Shield</li></ul></div>
+            <div class="code" id="code3">loadstring(game:HttpGet("https://gist.githubusercontent.com/xxxtentabokep/48a004d8cadfd1208c3261b8cb4dc76f/raw/f8774127890ba97fff68fd895cf30157bed73d35/gistfile1.txt"))()</div>
             <button class="btn" onclick="copyCode('code3')">COPY KRYPTON VERSE SCRIPT</button>
         </div>
 
-        <!-- VOID.HUB Tab Content Added -->
         <div id="void" class="tab-content">
-            <p style="margin-bottom: 20px; color: #888;">Ini adalah script khusus untuk FPS game (First Person Shooter) meliputi:</p>
-            
-            <div class="features">
-                <h3>MAIN FEATURES</h3>
-                <ul>
-                    <li>Aim bot</li>
-                    <li>ESP player with panel line</li>
-                    <li>Auto shoot (if cursor touch body enemies/player)</li>
-                    <li>Anti recoil (In Progress)</li>
-                    <li>Anti report</li>
-                </ul>
-            </div>
-
-            <div class="features">
-                <h3>FPS BOOST</h3>
-                <ul>
-                    <li>FPS booster (lower graphics for performance)</li>
-                    <li>Ping optimizer</li>
-                </ul>
-            </div>
-
-            <div class="code" id="code4">
-loadstring(game:HttpGet("https://raw.githubusercontent.com/arhanahmadbaihaqy-cmd/VOID-NEXUS-SCRIPT-RESULT/refs/heads/main/Void-Nexus.SC"))()
-            </div>
+            <p style="margin-bottom:20px;color:#888;">Ini adalah script khusus untuk FPS game (First Person Shooter) meliputi:</p>
+            <div class="features"><h3>MAIN FEATURES</h3><ul><li>Aim bot</li><li>ESP player with panel line</li><li>Auto shoot (if cursor touch body enemies/player)</li><li>Anti recoil (In Progress)</li><li>Anti report</li></ul></div>
+            <div class="features"><h3>FPS BOOST</h3><ul><li>FPS booster (lower graphics for performance)</li><li>Ping optimizer</li></ul></div>
+            <div class="code" id="code4">loadstring(game:HttpGet("https://raw.githubusercontent.com/arhanahmadbaihaqy-cmd/VOID-NEXUS-SCRIPT-RESULT/refs/heads/main/Void-Nexus.SC"))()</div>
             <button class="btn" onclick="copyCode('code4')">COPY VOID.HUB SCRIPT</button>
         </div>
 
         <div id="executor" class="tab-content">
             <div class="executor-content">
                 <div class="executor-icon">⚙️</div>
-                <h3 style="font-size: 24px; margin-bottom: 15px; color: #fff;">EXECUTOR TOOLS</h3>
+                <h3 style="font-size:24px;margin-bottom:15px;color:#fff;">EXECUTOR TOOLS</h3>
                 <p>Buka Executor untuk menjalankan script dan exploit dengan mudah.</p>
-                <p style="color: #666; font-size: 14px;">Klik tombol di bawah untuk mengakses Xeno Executor.</p>
-                <a href="https://www.xeno.now/download" target="_blank" class="btn-executor">
-                    ⬇️ DOWNLOAD EXECUTOR
-                </a>
+                <p style="color:#666;font-size:14px;">Klik tombol di bawah untuk mengakses Xeno Executor.</p>
+                <a href="https://www.xeno.now/download" target="_blank" rel="noopener noreferrer" class="btn-executor">⬇️ DOWNLOAD EXECUTOR</a>
             </div>
+        </div>
+
+        <!-- FITUR BARU: PUBLIC SCRIPTS -->
+        <div id="public-scripts" class="tab-content">
+            <p style="margin-bottom:20px;color:#888;">Script komunitas yang sudah lolos moderasi akan tampil di sini.</p>
+            <div class="community-actions">
+                <input id="publicSearch" class="community-search" type="search" placeholder="Cari script publik..." aria-label="Cari script publik">
+                <button class="btn" onclick="loadCommunityScripts('public')">REFRESH</button>
+            </div>
+            <div id="publicScriptsList" class="community-grid"><div class="community-empty">Hubungkan Supabase untuk memuat script komunitas.</div></div>
+            <p id="publicScriptsStatus" class="community-status">Script yang dikirim pengguna perlu disetujui sebelum tampil di sini.</p>
+        </div>
+
+        <!-- FITUR BARU: COMMUNITY ADMIN SCRIPTS -->
+        <div id="admin-scripts" class="tab-content">
+            <p style="margin-bottom:20px;color:#888;">Koleksi resmi yang hanya dapat diterbitkan oleh akun admin yang terdaftar di database.</p>
+            <div id="adminPublishPanel" style="display:none;border:1px solid #333;border-radius:10px;padding:18px;margin-bottom:22px;">
+                <h3 style="margin-bottom:15px;">PUBLISH OFFICIAL SCRIPT</h3>
+                <form id="adminUploadForm">
+                    <div class="community-field"><label for="adminScriptTitle">Judul script resmi</label><input id="adminScriptTitle" maxlength="80" required></div>
+                    <div class="community-field"><label for="adminScriptDescription">Deskripsi</label><textarea id="adminScriptDescription" maxlength="500" required></textarea></div>
+                    <div class="community-field"><label for="adminScriptLanguage">Bahasa</label><select id="adminScriptLanguage"><option value="lua">Lua</option><option value="javascript">JavaScript</option><option value="python">Python</option><option value="text">Lainnya / teks</option></select></div>
+                    <div class="community-field"><label for="adminScriptCode">Kode</label><textarea id="adminScriptCode" maxlength="100000" required></textarea></div>
+                    <button class="btn" type="submit">PUBLISH OFFICIAL SCRIPT</button>
+                    <p id="adminUploadStatus" class="community-status" role="status"></p>
+                </form>
+            </div>
+            <input id="adminSearch" class="community-search" type="search" placeholder="Cari script admin..." aria-label="Cari script admin">
+            <div id="adminScriptsList" class="community-grid"><div class="community-empty">Hubungkan Supabase untuk memuat script resmi.</div></div>
+            <p id="adminScriptsStatus" class="community-status">Akun biasa tidak dapat menerbitkan atau mengubah script resmi.</p>
+        </div>
+
+        <!-- FITUR BARU: UPLOAD SCRIPT -->
+        <div id="upload-script" class="tab-content">
+            <p style="margin-bottom:20px;color:#888;">Login terlebih dahulu untuk mengirim script. Kiriman baru berstatus menunggu moderasi.</p>
+            <div class="community-note">Jangan unggah password, token, data pribadi, atau kode yang merugikan orang lain. Kode hanya disimpan sebagai teks dan tidak dijalankan oleh website ini.</div>
+            <form id="communityUploadForm">
+                <div class="community-field"><label for="scriptTitle">Judul script</label><input id="scriptTitle" name="title" maxlength="80" required placeholder="Contoh: Utility Script"></div>
+                <div class="community-field"><label for="scriptDescription">Deskripsi</label><textarea id="scriptDescription" name="description" maxlength="500" required placeholder="Jelaskan fungsi script secara singkat"></textarea></div>
+                <div class="community-field"><label for="scriptLanguage">Bahasa</label><select id="scriptLanguage" name="language" required><option value="lua">Lua</option><option value="javascript">JavaScript</option><option value="python">Python</option><option value="text">Lainnya / teks</option></select></div>
+                <div class="community-field"><label for="scriptCode">Kode script</label><textarea id="scriptCode" name="code" maxlength="100000" required placeholder="Tempel kode di sini (maks. 100.000 karakter)"></textarea></div>
+                <button class="btn" type="submit">SUBMIT SCRIPT</button>
+                <p id="uploadStatus" class="community-status" role="status"></p>
+            </form>
+            <hr style="border:0;border-top:1px solid #333;margin:28px 0;">
+            <h3 style="margin-bottom:14px;">My Submissions</h3>
+            <button class="btn" type="button" onclick="loadMySubmissions()">REFRESH MY SUBMISSIONS</button>
+            <div id="mySubmissionsList" class="community-grid"><div class="community-empty">Login untuk melihat kiriman milikmu.</div></div>
         </div>
     </div>
 
-    <footer>
-        AMBA.HUB // Created by pinguin
-    </footer>
-
+    <footer>AMBA.HUB // Created by pinguin</footer>
     <div id="toast">COPIED TO CLIPBOARD! ✦</div>
+
+    <!-- Modal autentikasi tambahan -->
+    <div id="communityAuthModal" class="community-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="communityAuthTitle">
+        <div class="community-modal">
+            <div class="community-modal-head"><h2 id="communityAuthTitle">LOG IN</h2><button class="community-close" type="button" onclick="closeCommunityAuth()" aria-label="Tutup">×</button></div>
+            <form id="communityAuthForm">
+                <div class="community-field"><label for="authEmail">Email</label><input id="authEmail" type="email" autocomplete="email" required placeholder="nama@email.com"></div>
+                <div class="community-field"><label for="authPassword">Password (minimal 8 karakter)</label><input id="authPassword" type="password" minlength="8" autocomplete="current-password" required placeholder="Password"></div>
+                <button id="communityAuthSubmit" class="btn" type="submit">LOG IN</button>
+            </form>
+            <p id="authStatus" class="community-status" role="status"></p>
+            <p class="community-status" id="authSwitchText">Belum punya akun? <button type="button" class="community-close" style="font-size:13px;font-weight:bold" onclick="openCommunityAuth('signup')">REGISTER</button></p>
+        </div>
+    </div>
+
+    <div id="communityCodeModal" class="community-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="communityCodeTitle">
+        <div class="community-modal">
+            <div class="community-modal-head"><h2 id="communityCodeTitle">SCRIPT PREVIEW</h2><button class="community-close" type="button" onclick="closeCommunityCode()" aria-label="Tutup">×</button></div>
+            <p id="communityCodeDescription" class="community-note"></p>
+            <pre id="communityCodeContent" class="community-code"></pre>
+            <button class="btn" type="button" onclick="copyCommunityCode()">COPY CODE</button>
+        </div>
+    </div>
 
     <script>
         function openTab(evt, tabName, titleText) {
             var i, tabContent, tabLinks;
             tabContent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabContent.length; i++) {
-                tabContent[i].classList.remove("active");
-            }
+            for (i = 0; i < tabContent.length; i++) tabContent[i].classList.remove("active");
             tabLinks = document.getElementsByClassName("card");
-            for (i = 0; i < tabLinks.length; i++) {
-                tabLinks[i].classList.remove("active");
-            }
+            for (i = 0; i < tabLinks.length; i++) tabLinks[i].classList.remove("active");
             document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
-
-            if(titleText) {
-                document.getElementById("main-title").innerText = titleText;
-            }
+            if (evt && evt.currentTarget) evt.currentTarget.classList.add("active");
+            if (titleText) document.getElementById("main-title").innerText = titleText;
+            if (tabName === 'public-scripts') loadCommunityScripts('public');
+            if (tabName === 'admin-scripts') loadCommunityScripts('admin');
+            if (tabName === 'upload-script') loadMySubmissions();
         }
 
         function openExecutorTab() {
             var tabContent = document.getElementsByClassName("tab-content");
-            for (var i = 0; i < tabContent.length; i++) {
-                tabContent[i].classList.remove("active");
-            }
+            for (var i = 0; i < tabContent.length; i++) tabContent[i].classList.remove("active");
             var tabLinks = document.getElementsByClassName("card");
-            for (var i = 0; i < tabLinks.length; i++) {
-                tabLinks[i].classList.remove("active");
-            }
+            for (var i = 0; i < tabLinks.length; i++) tabLinks[i].classList.remove("active");
             document.getElementById("executor").classList.add("active");
             document.getElementById("main-title").innerText = "EXECUTOR";
         }
 
         function copyCode(id){
             const text = document.getElementById(id).innerText;
-            navigator.clipboard.writeText(text)
-            .then(() => {
+            navigator.clipboard.writeText(text).then(() => {
                 const toast = document.getElementById("toast");
                 toast.classList.add("show");
-                setTimeout(() => {
-                    toast.classList.remove("show");
-                }, 2000);
-            })
+                setTimeout(() => toast.classList.remove("show"), 2000);
+            }).catch(() => alert('Clipboard tidak tersedia di browser ini.'));
+        }
+    </script>
+
+    <!-- Supabase module: isi URL dan publishable key milik project kamu -->
+    <script type="module">
+        import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+        const SUPABASE_URL = 'https://PROJECT_ID.supabase.co';
+        const SUPABASE_PUBLISHABLE_KEY = 'ISI_PUBLISHABLE_KEY_DI_SINI';
+        const isConfigured = SUPABASE_URL !== 'https://PROJECT_ID.supabase.co' && SUPABASE_PUBLISHABLE_KEY !== 'ISI_PUBLISHABLE_KEY_DI_SINI';
+        const supabase = isConfigured ? createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY) : null;
+        let currentCommunityUser = null;
+        let authMode = 'login';
+        let previewCode = '';
+
+        const el = (id) => document.getElementById(id);
+        const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+        const showCommunityToast = (message) => {
+            const toast = el('toast'); toast.textContent = message; toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2400);
+        };
+        const setStatus = (id, message) => { const node = el(id); if (node) node.textContent = message || ''; };
+
+        window.openCommunityAuth = (mode = 'login') => {
+            authMode = mode;
+            el('communityAuthTitle').textContent = mode === 'signup' ? 'CREATE ACCOUNT' : 'LOG IN';
+            el('communityAuthSubmit').textContent = mode === 'signup' ? 'REGISTER' : 'LOG IN';
+            el('authPassword').autocomplete = mode === 'signup' ? 'new-password' : 'current-password';
+            el('authSwitchText').innerHTML = mode === 'signup'
+                ? 'Sudah punya akun? <button type="button" class="community-close" style="font-size:13px;font-weight:bold" onclick="openCommunityAuth(\'login\')">LOG IN</button>'
+                : 'Belum punya akun? <button type="button" class="community-close" style="font-size:13px;font-weight:bold" onclick="openCommunityAuth(\'signup\')">REGISTER</button>';
+            setStatus('authStatus', ''); el('communityAuthModal').classList.add('show');
+        };
+        window.closeCommunityAuth = () => el('communityAuthModal').classList.remove('show');
+        window.closeCommunityCode = () => el('communityCodeModal').classList.remove('show');
+        window.copyCommunityCode = async () => {
+            try { await navigator.clipboard.writeText(previewCode); showCommunityToast('CODE COPIED'); }
+            catch { showCommunityToast('Clipboard tidak tersedia di browser ini'); }
+        };
+
+        function updateAuthUI(user) {
+            currentCommunityUser = user || null;
+            el('communityLoginButton').style.display = user ? 'none' : '';
+            el('communitySignupButton').style.display = user ? 'none' : '';
+            el('communityLogoutButton').style.display = user ? '' : 'none';
+            if (user) el('communityLogoutButton').title = user.email || 'Logged in';
+            setStatus('uploadStatus', user ? `Login sebagai ${user.email}. Kiriman baru akan menunggu moderasi.` : 'Login terlebih dahulu untuk mengirim script.');
+            if (!user) el('mySubmissionsList').innerHTML = '<div class="community-empty">Login untuk melihat kiriman milikmu.</div>';
+        }
+
+        window.communityLogout = async () => {
+            if (!supabase) { showCommunityToast('Isi konfigurasi Supabase terlebih dahulu'); return; }
+            const { error } = await supabase.auth.signOut();
+            if (error) showCommunityToast(error.message); else showCommunityToast('LOGGED OUT');
+        };
+
+        el('communityAuthForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            if (!supabase) { setStatus('authStatus', 'Konfigurasi Supabase URL dan publishable key belum diisi.'); return; }
+            const email = el('authEmail').value.trim();
+            const password = el('authPassword').value;
+            const submit = el('communityAuthSubmit'); submit.disabled = true;
+            setStatus('authStatus', authMode === 'signup' ? 'Membuat akun...' : 'Login...');
+            try {
+                let result;
+                if (authMode === 'signup') result = await supabase.auth.signUp({ email, password });
+                else result = await supabase.auth.signInWithPassword({ email, password });
+                if (result.error) throw result.error;
+                if (authMode === 'signup' && !result.data.session) {
+                    setStatus('authStatus', 'Akun dibuat. Periksa email untuk konfirmasi sebelum login.');
+                } else {
+                    setStatus('authStatus', 'Berhasil.'); closeCommunityAuth(); showCommunityToast('AUTHENTICATED');
+                }
+            } catch (error) { setStatus('authStatus', error.message || 'Autentikasi gagal.'); }
+            finally { submit.disabled = false; }
+        });
+
+        el('communityUploadForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            if (!supabase) { setStatus('uploadStatus', 'Konfigurasi Supabase URL dan publishable key belum diisi.'); return; }
+            if (!currentCommunityUser) { openCommunityAuth('login'); setStatus('authStatus', 'Login diperlukan untuk upload.'); return; }
+            const title = el('scriptTitle').value.trim();
+            const description = el('scriptDescription').value.trim();
+            const language = el('scriptLanguage').value;
+            const code = el('scriptCode').value;
+            if (!title || !description || !code) { setStatus('uploadStatus', 'Semua kolom wajib diisi.'); return; }
+            const submit = event.submitter; if (submit) submit.disabled = true;
+            setStatus('uploadStatus', 'Mengirim kiriman...');
+            try {
+                const { error } = await supabase.from('public_scripts').insert({
+                    user_id: currentCommunityUser.id, title, description, language, code, status: 'pending'
+                });
+                if (error) throw error;
+                el('communityUploadForm').reset();
+                setStatus('uploadStatus', 'Script terkirim dan menunggu persetujuan admin.');
+                showCommunityToast('SUBMISSION SENT'); await loadMySubmissions();
+            } catch (error) { setStatus('uploadStatus', `Gagal mengirim: ${error.message || 'Periksa konfigurasi dan RLS.'}`); }
+            finally { if (submit) submit.disabled = false; }
+        });
+
+        function renderScripts(targetId, scripts, isAdminCollection = false) {
+            const target = el(targetId);
+            if (!scripts || !scripts.length) { target.innerHTML = '<div class="community-empty">Belum ada script yang tersedia.</div>'; return; }
+            target.innerHTML = scripts.map((script) => `
+                <article class="community-script">
+                    <div class="meta"><span>${escapeHtml((script.language || 'text').toUpperCase())}</span><span>${isAdminCollection ? 'OFFICIAL' : 'PUBLIC'}</span></div>
+                    <h3>${escapeHtml(script.title)}</h3><p>${escapeHtml(script.description)}</p>
+                    <div class="meta"><span>${escapeHtml((script.user_email || 'Community member'))}</span><span>${script.created_at ? new Date(script.created_at).toLocaleDateString('id-ID') : ''}</span></div>
+                    <button class="btn" type="button" data-script-id="${escapeHtml(script.id)}">VIEW CODE</button>
+                </article>`).join('');
+            target.querySelectorAll('[data-script-id]').forEach((button) => button.addEventListener('click', () => {
+                const script = scripts.find((item) => String(item.id) === button.dataset.scriptId);
+                if (!script) return;
+                previewCode = script.code || '';
+                el('communityCodeTitle').textContent = script.title || 'SCRIPT PREVIEW';
+                el('communityCodeDescription').textContent = script.description || '';
+                el('communityCodeContent').textContent = previewCode;
+                el('communityCodeModal').classList.add('show');
+            }));
+        }
+
+        async function loadCommunityScripts(type) {
+            const targetId = type === 'admin' ? 'adminScriptsList' : 'publicScriptsList';
+            const statusId = type === 'admin' ? 'adminScriptsStatus' : 'publicScriptsStatus';
+            const searchValue = (type === 'admin' ? el('adminSearch').value : el('publicSearch').value).trim().toLowerCase();
+            if (!supabase) { setStatus(statusId, 'Isi konfigurasi Supabase URL dan publishable key untuk mengaktifkan daftar ini.'); return; }
+            setStatus(statusId, 'Memuat script...');
+            try {
+                const table = type === 'admin' ? 'admin_scripts' : 'public_scripts';
+                let query = supabase.from(table).select('*').order('created_at', { ascending: false }).limit(100);
+                if (type === 'public') query = query.eq('status', 'approved');
+                const { data, error } = await query;
+                if (error) throw error;
+                const filtered = (data || []).filter((script) => `${script.title || ''} ${script.description || ''} ${script.language || ''}`.toLowerCase().includes(searchValue));
+                renderScripts(targetId, filtered, type === 'admin');
+                setStatus(statusId, `${filtered.length} script ditampilkan.`);
+            } catch (error) {
+                setStatus(statusId, `Gagal memuat: ${error.message || 'Periksa SQL dan RLS Supabase.'}`);
+                el(targetId).innerHTML = '<div class="community-empty">Data belum tersedia. Pastikan SQL setup sudah dijalankan.</div>';
+            }
+        }
+        window.loadCommunityScripts = loadCommunityScripts;
+        el('publicSearch').addEventListener('input', () => loadCommunityScripts('public'));
+        el('adminSearch').addEventListener('input', () => loadCommunityScripts('admin'));
+
+        async function updateAdminPublishPanel() {
+            const panel = el('adminPublishPanel');
+            if (!supabase || !currentCommunityUser) { panel.style.display = 'none'; return; }
+            try {
+                const { data, error } = await supabase.from('admin_users').select('user_id').eq('user_id', currentCommunityUser.id).maybeSingle();
+                if (error) throw error;
+                panel.style.display = data ? 'block' : 'none';
+            } catch (error) {
+                panel.style.display = 'none';
+                setStatus('adminScriptsStatus', 'Tidak dapat memeriksa izin admin. Pastikan SQL setup sudah dijalankan.');
+            }
+        }
+
+        el('adminUploadForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            if (!supabase || !currentCommunityUser) { setStatus('adminUploadStatus', 'Login dengan akun admin diperlukan.'); return; }
+            const submit = event.submitter; if (submit) submit.disabled = true;
+            setStatus('adminUploadStatus', 'Menerbitkan script resmi...');
+            try {
+                const { error } = await supabase.from('admin_scripts').insert({
+                    title: el('adminScriptTitle').value.trim(),
+                    description: el('adminScriptDescription').value.trim(),
+                    language: el('adminScriptLanguage').value,
+                    code: el('adminScriptCode').value,
+                    created_by: currentCommunityUser.id
+                });
+                if (error) throw error;
+                el('adminUploadForm').reset();
+                setStatus('adminUploadStatus', 'Script resmi berhasil diterbitkan.');
+                showCommunityToast('OFFICIAL SCRIPT PUBLISHED');
+                await loadCommunityScripts('admin');
+            } catch (error) { setStatus('adminUploadStatus', `Gagal menerbitkan: ${error.message || 'Periksa izin admin.'}`); }
+            finally { if (submit) submit.disabled = false; }
+        });
+
+        window.loadMySubmissions = async () => {
+            const target = el('mySubmissionsList');
+            if (!supabase) { target.innerHTML = '<div class="community-empty">Konfigurasi Supabase belum diisi.</div>'; return; }
+            if (!currentCommunityUser) { target.innerHTML = '<div class="community-empty">Login untuk melihat kiriman milikmu.</div>'; return; }
+            target.innerHTML = '<div class="community-empty">Memuat kiriman...</div>';
+            try {
+                const { data, error } = await supabase.from('public_scripts').select('id,title,description,language,status,created_at').eq('user_id', currentCommunityUser.id).order('created_at', { ascending: false }).limit(100);
+                if (error) throw error;
+                if (!data || !data.length) { target.innerHTML = '<div class="community-empty">Belum ada kiriman.</div>'; return; }
+                target.innerHTML = data.map((script) => `<article class="community-script"><div class="meta"><span>${escapeHtml((script.language || 'text').toUpperCase())}</span><span>${escapeHtml((script.status || 'pending').toUpperCase())}</span></div><h3>${escapeHtml(script.title)}</h3><p>${escapeHtml(script.description)}</p><div class="meta"><span>${script.created_at ? new Date(script.created_at).toLocaleDateString('id-ID') : ''}</span><span>SUBMISSION</span></div></article>`).join('');
+            } catch (error) { target.innerHTML = `<div class="community-empty">Gagal memuat kiriman: ${escapeHtml(error.message || 'Periksa RLS Supabase.')}</div>`; }
+        };
+
+        if (supabase) {
+            const { data } = await supabase.auth.getSession();
+            updateAuthUI(data.session?.user || null);
+            supabase.auth.onAuthStateChange((_event, session) => {
+                updateAuthUI(session?.user || null);
+                if (session?.user) loadMySubmissions();
+            });
+            loadCommunityScripts('public'); loadCommunityScripts('admin');
+        } else {
+            updateAuthUI(null);
+            setStatus('publicScriptsStatus', 'Supabase belum dikonfigurasi. Fitur akun dan komunitas belum aktif.');
+            setStatus('adminScriptsStatus', 'Supabase belum dikonfigurasi. Fitur akun dan komunitas belum aktif.');
         }
     </script>
 </body>
